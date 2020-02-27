@@ -9,7 +9,7 @@ app.use(express.static("public"));
 app.use(express.static("assets"));
 app.use(express.static("css"));
 app.use(express.static("js"));
-app.use(express.urlencoded({ extend: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -67,7 +67,7 @@ let init = () => {
       database = JSON.parse(data);
     });
   } else {
-    fs.readFile("./db/template.json", (err, data) => {
+    fs.readFile("./db/db.json", (err, data) => {
       if (err) throw err;
       database = JSON.parse(data);
       fs.writeFile("./db/db.json", JSON.stringify(database), "utf8", err => {
